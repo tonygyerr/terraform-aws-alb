@@ -8,5 +8,6 @@ module "alb" {
   public_subnet_ids     = var.public_subnet_ids
   route53_zone_name     = var.route53_zone_name
   vpc_config            = var.vpc_config
-  tags                  = merge(map("Name", local.environment_name != local.tf_workspace ? "${local.tf_workspace}-${var.app_name}-alb" : "${var.app_name}-alb"), merge(var.tags, var. acn_tags))
+  vpc_name              = var.vpc_name
+  tags                  = merge(map("Name", local.environment_name != local.tf_workspace ? "${local.tf_workspace}-${var.app_name}-alb" : "${var.app_name}-alb"), merge(var.tags))
 }

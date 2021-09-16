@@ -46,11 +46,9 @@ variable "vpc_config" {
   type        = map(string)
 }
 
-variable "acn_tags" {
+variable "vpc_name" {
+  description = "configuration option for vpc"
   type        = map(string)
-  description = "optional tags"
-
-  default = {}
 }
 
 variable "deploy_env_map" {

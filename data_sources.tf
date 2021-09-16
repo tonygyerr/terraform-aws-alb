@@ -30,10 +30,10 @@ data "null_data_source" "environment" {
   )}"
 }
 
-data "aws_vpc" "computer_vision" {
+data "aws_vpc" "this" {
   filter {
     name   = "tag:Name"
-    values = ["default-app-vpc"]
+    values = [var.vpc_name]
   }
 }
 

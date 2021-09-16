@@ -11,6 +11,7 @@ vpc_config = {
   vpc_id            = ""
 }
 
+vpc_name  = ""
 public_subnet_ids = [""]
 
 tags = {

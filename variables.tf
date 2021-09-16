@@ -3,6 +3,11 @@ variable "vpc_config" {
   type        = map(string)
 }
 
+variable "vpc_name" {
+  description = "configuration option for vpc"
+  type        = map(string)
+}
+
 variable "app_name" {
   type        = string
   description = "Application"
