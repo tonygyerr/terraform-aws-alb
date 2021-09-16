@@ -48,7 +48,7 @@ variable "vpc_config" {
 
 variable "vpc_name" {
   description = "configuration option for vpc"
-  type        = map(string)
+  type        = string
 }
 
 variable "deploy_env_map" {
