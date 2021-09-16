@@ -57,7 +57,7 @@ resource "aws_lb_target_group" "https" {
   name     = "${var.app_name}-alb-tg"
   port     = var.target_port #80
   protocol = var.target_protocol #"HTTPS"
-  vpc_id   = data.aws_vpc.computer_vision.id #var.vpc_config.vpc_id
+  vpc_id   = var.vpc_config.vpc_id #data.aws_vpc.computer_vision.id #
   
   health_check {
     path              = var.path
