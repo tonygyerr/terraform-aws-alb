@@ -11,7 +11,7 @@ vpc_config = {
   vpc_id            = ""
 }
 
-public_subnet_ids = ["subnet-0d0a753d91527cf8e", "subnet-03834ff9536eb40f6"]
+public_subnet_ids = [""]
 
 tags = {
   Owner       = "user"
