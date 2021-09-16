@@ -25,7 +25,7 @@ tags = {
 #--------------------------------------------------------------
 # alb
 #--------------------------------------------------------------
-lb_logs_bucket              = "echo-jenkins-bucket"
+lb_logs_bucket              = ""
 lb_logs_prefix              = "logs"
 load_balancer_type          = "application"
 

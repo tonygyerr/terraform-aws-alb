@@ -6,7 +6,7 @@ resource "aws_route53_zone" "this" {
   }
 }
 
-resource "aws_route53_record" "jenkins" {
+resource "aws_route53_record" "this" {
   count     = var.ec2_instance_count
   zone_id   = aws_route53_zone.this.zone_id #data.aws_route53_zone.app.zone_id
   name      = aws_acm_certificate.acm_certificate.domain_validation_options.0.resource_record_name

@@ -3,7 +3,7 @@ resource "aws_lb" "public" {
   internal                         = true
   load_balancer_type               = var.load_balancer_type
   enable_cross_zone_load_balancing = var.enable_cross_zone_load_balancing
-  security_groups                  = [aws_security_group.jenkins.id] #[var.security_groups]
+  security_groups                  = [aws_security_group.app.id] #[var.security_groups]
   subnets                          = var.public_subnet_ids
   idle_timeout                     = 400
   ip_address_type                  = "ipv4"

@@ -1,5 +1,5 @@
 resource "aws_acm_certificate" "acm_certificate" {
-  domain_name       = var.route53_domain_name #"app.jenkins-app.com"
+  domain_name       = var.route53_domain_name
   validation_method = var.validation_method #"DNS"
   # tags {
   #   Name = "fatm"
@@ -11,5 +11,5 @@ resource "aws_acm_certificate" "acm_certificate" {
 
 # resource "aws_acm_certificate_validation" "acm_certificate_validation" {
 #   certificate_arn         = aws_acm_certificate.acm_certificate.arn
-#   validation_record_fqdns = [aws_route53_record.jenkins.*.fqdn]
+#   validation_record_fqdns = [aws_route53_record.app.*.fqdn]
 # }    
