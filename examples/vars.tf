@@ -51,6 +51,11 @@ variable "vpc_name" {
   type        = string
 }
 
+variable "asg_name" {
+  description = "Name of the autoscaled ec2 instance"
+  type        = string
+}
+
 variable "deploy_env_map" {
   type = map
   default = {

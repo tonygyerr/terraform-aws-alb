@@ -2,6 +2,7 @@ module "alb" {
   source = "git::ssh://git@github.com:tonygyerr/terraform-aws-alb.git"
   #source = "../"
   app_name              = var.app_name
+  asg_name              = var.asg_name
   load_balancer_type    = var.load_balancer_type
   lb_logs_bucket        = var.lb_logs_bucket
   lb_logs_prefix        = var.lb_logs_prefix

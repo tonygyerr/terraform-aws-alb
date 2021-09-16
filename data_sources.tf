@@ -41,11 +41,11 @@ data "aws_instance" "server" {
   # instance_id = "i-instanceid"
 
   filter {
-    name   = "tag:Owner"
-    values = ["app"]
+    name   = "tag:aws:autoscaling:groupName"
+    values = [var.asg_name]
   }
   filter {
     name   = "tag:Name"
-    values = ["app"]
+    values = [var.asg_name]
   }
 }

@@ -4,9 +4,15 @@ variable "vpc_config" {
 }
 
 variable "vpc_name" {
-  description = "configuration option for vpc"
+  description = "Name of the VPC"
   type        = string
 }
+
+variable "asg_name" {
+  description = "Name of the autoscaled ec2 instance"
+  type        = string
+}
+
 
 variable "app_name" {
   type        = string
