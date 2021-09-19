@@ -1,5 +1,5 @@
 resource "aws_lb" "public" {
-  name                             = var.lb_name
+  name                             = "${var.app_name}-alb"
   internal                         = true
   load_balancer_type               = var.load_balancer_type
   enable_cross_zone_load_balancing = var.enable_cross_zone_load_balancing
@@ -78,13 +78,7 @@ resource "aws_lb_target_group" "https" {
   tags                  = merge(map("Name", local.environment_name != local.tf_workspace ? "${local.tf_workspace}-${var.app_name}-tg" : "${var.app_name}-tg"), merge(var.tags, var. acn_tags))
 }
 
-resource "aws_alb_target_group_attachment" "server" {
-  target_group_arn       = aws_lb_target_group.https.arn
-  target_id              = data.aws_instance.server.id #var.vpc_config.instance_id
-  port                   = 8080
-}
-
 # resource "aws_autoscaling_attachment" "server" {
-#   alb_target_group_arn   = aws_alb_target_group.alb_target_group.arn
-#   autoscaling_group_name = aws_autoscaling_group.svc_asg.id
+#   alb_target_group_arn   = aws_lb_target_group.https.arn
+#   autoscaling_group_name = data.aws_autoscaling_group.server.id
 # }

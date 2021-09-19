@@ -30,22 +30,6 @@ data "null_data_source" "environment" {
   )}"
 }
 
-data "aws_vpc" "this" {
-  filter {
-    name   = "tag:Name"
-    values = [var.vpc_name]
-  }
-}
-
-data "aws_instance" "server" {
-  # instance_id = "i-instanceid"
-
-  filter {
-    name   = "tag:aws:autoscaling:groupName"
-    values = [var.asg_name]
-  }
-  filter {
-    name   = "tag:Name"
-    values = [var.asg_name]
-  }
-}
+# data "aws_autoscaling_group" "server" {
+#   name = "my-asg-name"
+# }
