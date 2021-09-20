@@ -33,3 +33,5 @@ load_balancer_type          = "application"
 # route53
 #--------------------------------------------------------------
 route53_zone_name           = "my-app.com"
+tls_ppk_filename            = "" #"examples/resources/cert.ppk"
+tls_ppk_filename            = "" #"examples/resources/cert.pem"

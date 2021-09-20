@@ -70,3 +70,15 @@ variable "load_balancer_type" {
   type        = string
   default     = ""
 }
+
+variable "tls_pem_filename" {
+  description = "The location of your pem file"
+  type        = string
+  default     = ""
+}
+
+variable "tls_ppk_filename" {
+  description = "The location of your ppk file"
+  type        = string
+  default     = ""
+}
