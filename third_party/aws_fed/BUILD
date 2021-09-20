@@ -3,7 +3,6 @@ project_name = "auth"
 filegroup(
     name = "aws_fed",
     srcs = [
-        # "aws-fed.toml",
         "federate.sh",
     ],
 )
