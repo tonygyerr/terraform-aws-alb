@@ -32,4 +32,4 @@ load_balancer_type          = "application"
 #--------------------------------------------------------------
 # route53
 #--------------------------------------------------------------
-route53_zone_name           = "jenkins-app.com"
+route53_zone_name           = "my-app.com"

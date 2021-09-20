@@ -1,9 +1,7 @@
 resource "aws_acm_certificate" "acm_certificate" {
   domain_name       = var.route53_domain_name
-  validation_method = var.validation_method #"DNS"
-  # tags {
-  #   Name = "fatm"
-  # }
+  validation_method = var.validation_method 
+  
   lifecycle {
     create_before_destroy = true
   }
