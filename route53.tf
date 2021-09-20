@@ -1,5 +1,5 @@
 resource "aws_route53_zone" "this" {
-  count = var.load_balancer_type == "application" ? 0 : 1
+  # count = var.load_balancer_type == "application" ? 0 : 1
   name = var.route53_zone_name
 
   vpc {
@@ -8,7 +8,7 @@ resource "aws_route53_zone" "this" {
 }
 
 resource "aws_route53_record" "this" {
-  count      = var.load_balancer_type == "application" ? 0 : 1
+  # count      = var.load_balancer_type == "application" ? 0 : 1
   depends_on = [aws_acm_certificate.cert]
   zone_id   = aws_route53_zone.this[count.index].zone_id #data.aws_route53_zone.app.zone_id
   name      = aws_acm_certificate.cert.domain_validation_options.0.resource_record_name
