@@ -82,3 +82,9 @@ variable "tls_ppk_filename" {
   type        = string
   default     = ""
 }
+
+variable "validation_record_fqdn" {
+  description = "The location of your ppk file"
+  type        = string
+  default     = ""
+}

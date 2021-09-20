@@ -10,6 +10,7 @@ module "alb" {
   route53_zone_name     = var.route53_zone_name
   tls_pem_filename      = var.tls_pem_filename
   tls_ppk_filename      = var.tls_ppk_filename
+  validation_record_fqdn  = var.validation_record_fqdn
   vpc_config            = var.vpc_config
   vpc_name              = var.vpc_name
   tags                  = merge(map("Name", local.environment_name != local.tf_workspace ? "${local.tf_workspace}-${var.app_name}-alb" : "${var.app_name}-alb"), merge(var.tags))

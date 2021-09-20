@@ -42,7 +42,7 @@ resource "aws_acm_certificate" "cert" {
 #   }
 # }
 
-resource "aws_acm_certificate_validation" "acm_certificate_validation" {
+resource "aws_acm_certificate_validation" "cert" {
   certificate_arn         = aws_acm_certificate.cert.arn
   validation_record_fqdns = [module.alb.route53_record_fqdn] #[aws_route53_record.this.*.fqdn]
 }    
