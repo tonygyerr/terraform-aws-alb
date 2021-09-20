@@ -1,16 +1,16 @@
 output "route53_zone_zone_id" {
   description = "Zone ID of Route53 zone"
-  value       = aws_route53_zone.this.zone_id
+  value       = aws_route53_zone[count.index].this.zone_id
 }
 
 output "route53_zone_name_servers" {
   description = "Name servers of Route53 zone"
-  value       = aws_route53_zone.this.name_servers
+  value       = aws_route53_zone[count.index].this.name_servers
 }
 
 output "route53_zone_name" {
   description = "Name of Route53 zone"
-  value       = aws_route53_zone.this.name
+  value       = aws_route53_zone.this[count.index].name
 }
 
 output "route53_record_name" {
