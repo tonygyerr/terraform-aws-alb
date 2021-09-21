@@ -1,7 +1,12 @@
+# resource "aws_acm_certificate" "cert" {
+#   private_key       = var.tls_pem_filename #data.template_file.ppk.rendered
+#   certificate_body  = var.tls_ppk_filename #data.template_file.pem.rendered
+#   tags = merge(map("Name", "${var.app_name}-cert"), var.tags)
+# }
+
 resource "aws_acm_certificate" "cert" {
-  private_key       = var.tls_pem_filename #data.template_file.ppk.rendered
-  certificate_body  = var.tls_ppk_filename #data.template_file.pem.rendered
-  tags = merge(map("Name", "${var.app_name}-cert"), var.tags)
+  private_key      = tls_private_key.this.private_key_pem
+  certificate_body = tls_self_signed_cert.this.cert_pem
 }
 
 resource "aws_acm_certificate_validation" "cert" {
