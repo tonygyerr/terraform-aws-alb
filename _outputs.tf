@@ -13,12 +13,22 @@ output "route53_zone_name" {
   value       = aws_route53_zone.this.name
 }
 
+# output "route53_record_name" {
+#   description = "The name of the record"
+#   value       = aws_route53_record.this[each.key].name
+# }
+
+# output "route53_record_fqdn" {
+#   description = "FQDN built using the zone domain and name"
+#   value       = aws_route53_record.this[each.key].fqdn
+# }
+
 output "route53_record_name" {
   description = "The name of the record"
-  value       = aws_route53_record.this[each.key].name
+  value       = { for k, v in aws_route53_record.this : k => v.name }
 }
 
 output "route53_record_fqdn" {
   description = "FQDN built using the zone domain and name"
-  value       = aws_route53_record.this[each.key].fqdn
+  value       = { for k, v in aws_route53_record.this : k => v.fqdn }
 }
