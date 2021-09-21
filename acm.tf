@@ -9,7 +9,7 @@ resource "aws_acm_certificate" "cert" {
   certificate_body = tls_self_signed_cert.this.cert_pem
 }
 
-resource "aws_acm_certificate_validation" "cert" {
-  certificate_arn         = aws_acm_certificate.cert.arn
-  validation_record_fqdns = [for record in aws_route53_record.this : record.fqdn] #[aws_route53_record.this[each.key].fqdn] #[module.alb.route53_record_fqdn] #[data.aws_route53_zone.app.fqdn]
-}
+# resource "aws_acm_certificate_validation" "cert" {
+#   certificate_arn         = aws_acm_certificate.cert.arn
+#   validation_record_fqdns = [for record in aws_route53_record.this : record.fqdn] #[aws_route53_record.this[each.key].fqdn] #[module.alb.route53_record_fqdn] #[data.aws_route53_zone.app.fqdn]
+# }
