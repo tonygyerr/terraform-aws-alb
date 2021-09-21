@@ -34,7 +34,6 @@ resource "aws_route53_record" "this" {
     }
   }
 
-  allow_overwrite = true
   name            = each.value.name
   records         = [each.value.record]
   ttl             = 60
