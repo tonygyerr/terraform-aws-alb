@@ -171,16 +171,28 @@ variable "certificate_arn" {
   default     = ""
 }
 
-variable "target_protocol" {
+variable "target_protocol_https" {
   description = "The protocol for the target instance that the load balancer will forward to.."
   type        = string
   default     = "HTTPS"
 }
 
-variable "target_port" {
+variable "target_protocol_http" {
+  description = "The protocol for the target instance that the load balancer will forward to.."
+  type        = string
+  default     = "HTTP"
+}
+
+variable "target_port_https" {
   description = "The port that the target is listening on"
   type        = number
   default     = 443
+}
+
+variable "target_port_http" {
+  description = "The port that the target is listening on"
+  type        = number
+  default     = 80
 }
 
 variable "interval" {

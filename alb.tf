@@ -54,9 +54,9 @@ resource "aws_lb_listener_rule" "host_based_routing" {
   }
 }
 resource "aws_lb_target_group" "https" {
-  name     = "${var.app_name}-alb-tg"
-  port     = var.target_port #80
-  protocol = var.target_protocol #"HTTPS"
+  name     = "${var.app_name}-alb-https-tg"
+  port     = var.target_port_https
+  protocol = var.target_protocol_https #"HTTPS"
   vpc_id   = var.vpc_config.vpc_id #data.aws_vpc.computer_vision.id #
   
   health_check {
@@ -75,7 +75,32 @@ resource "aws_lb_target_group" "https" {
     type = "lb_cookie"
   }
 
-  tags                  = merge(map("Name", local.environment_name != local.tf_workspace ? "${local.tf_workspace}-${var.app_name}-tg" : "${var.app_name}-tg"), merge(var.tags, var. acn_tags))
+  tags                  = merge(map("Name", local.environment_name != local.tf_workspace ? "${local.tf_workspace}-${var.app_name}-alb-https-tg" : "${var.app_name}-tg"), merge(var.tags, var. acn_tags))
+}
+
+resource "aws_lb_target_group" "http" {
+  name     = "${var.app_name}-alb-http-tg"
+  port     = var.target_port_http
+  protocol = var.target_protocol_http #"HTTPS"
+  vpc_id   = var.vpc_config.vpc_id #data.aws_vpc.computer_vision.id #
+  
+  health_check {
+    path              = var.path
+    interval          = var.interval
+    port              = var.port
+    protocol          = var.protocol
+    timeout           = var.load_balancer_type == "network" ? null : var.timeout
+    healthy_threshold = var.healthy_threshold
+    unhealthy_threshold = var.unhealthy_threshold
+    matcher             = var.load_balancer_type == "network" ? null : var.matcher
+  }
+
+  stickiness {
+    enabled = false
+    type = "lb_cookie"
+  }
+
+  tags                  = merge(map("Name", local.environment_name != local.tf_workspace ? "${local.tf_workspace}-${var.app_name}-alb-http-tg" : "${var.app_name}-tg"), merge(var.tags, var. acn_tags))
 }
 
 # resource "aws_autoscaling_attachment" "server" {
