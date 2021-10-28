@@ -32,3 +32,13 @@ output "route53_record_fqdn" {
   description = "FQDN built using the zone domain and name"
   value       = { for k, v in aws_route53_record.this : k => v.fqdn }
 }
+
+output "alb_target_group_http_arn"{
+  description = "Alb Target Group ARN"
+  value = aws_lb_target_group.http.arn
+}
+
+output "alb_target_group_https_arn"{
+  description = "Alb Target Group ARN"
+  value = aws_lb_target_group.https.arn
+}

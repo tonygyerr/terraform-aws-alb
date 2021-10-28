@@ -38,3 +38,13 @@ output "route53_record_fqdn" {
   description = "FQDN built using the zone domain and name"
   value       = module.alb.route53_record_fqdn
 }
+
+output "alb_target_group_https_arn" {
+  description = "Alb Target Group ARN"
+  value       = module.alb.alb_target_group_https_arn
+}
+
+output "alb_target_group_http_arn" {
+  description = "Alb Target Group ARN"
+  value       = module.alb.alb_target_group_http_arn
+}
