@@ -18,7 +18,7 @@ tags = {
   Owner       = "user"
   Environment = "dev"
   Region      = "us-east-1"
-  Owner       = "app"
+  Owner       = "app" 
   CostCenter  = "app"
 }
 
