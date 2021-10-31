@@ -1,7 +1,7 @@
 resource "aws_security_group" "app" {
   name        = "${var.app_name}-alb-sg"
   description = "Application Security Group"
-  vpc_id      = var.vpc_config.cidr 
+  vpc_id      = var.vpc_config.vpc_id 
 
   ingress {
     from_port   = 80
