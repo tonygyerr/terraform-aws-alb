@@ -82,7 +82,7 @@ resource "aws_lb_target_group" "https" {
     path              = var.path
     interval          = var.interval
     port              = var.port_https
-    protocol          = var.protocol
+    protocol          = var.protocol_https
     timeout           = var.load_balancer_type == "network" ? null : var.timeout
     healthy_threshold = var.healthy_threshold
     unhealthy_threshold = var.unhealthy_threshold
@@ -107,7 +107,7 @@ resource "aws_lb_target_group" "http" {
     path              = var.path
     interval          = var.interval
     port              = var.port_http
-    protocol          = var.protocol
+    protocol          = var.protocol_http
     timeout           = var.load_balancer_type == "network" ? null : var.timeout
     healthy_threshold = var.healthy_threshold
     unhealthy_threshold = var.unhealthy_threshold
