@@ -151,7 +151,7 @@ variable "protocol_http" {
 variable "protocol_https" {
   description = "The protocol for connections from clients to the load balancer. Valid values TCP, TLS, UDP, TCP_UDP, HTTP, and HTTPS."
   type        = string
-  default     = "HTTP"
+  default     = "HTTPS"
 }
 
 variable "port_http" {
