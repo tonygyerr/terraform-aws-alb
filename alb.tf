@@ -56,7 +56,7 @@ resource "aws_lb_listener" "https" {
   load_balancer_arn = aws_lb.public.arn
   port              = var.port_https    #443 #"80"
   protocol          = var.protocol_https #HTTPS #"HTTP"
-  ssl_policy        = var.protocol == "TLS" ? var.ssl_policy : ""
+  ssl_policy        = var.protocol_https == "TLS" ? var.ssl_policy : ""
   certificate_arn   = data.aws_acm_certificate.app.arn
 
   default_action {
