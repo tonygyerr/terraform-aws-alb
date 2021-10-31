@@ -3,11 +3,11 @@
 #    private_zone    = true
 #}
 
-# data "aws_acm_certificate" "acn" {
-#     domain          = var.route53_zone_name
-#     statuses        = ["PENDING_VALIDATION"]
-#     # provider        = "aws.virginia"
-# }
+data "aws_acm_certificate" "app" {
+  domain          = var.route53_zone_name
+  statuses        = ["ISSUED"]
+  most_recent     = true
+}
 
 data "aws_availability_zones" "main" {}
 

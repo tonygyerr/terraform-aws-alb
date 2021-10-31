@@ -27,10 +27,8 @@ resource "aws_lb" "public" {
 
 resource "aws_lb_listener" "http" {
   load_balancer_arn = aws_lb.public.arn
-  port              = var.port     #443 #"80"
-  protocol          = var.protocol #HTTPS #"HTTP"
-  # ssl_policy        = var.protocol == "TLS" ? var.ssl_policy : ""
-  # certificate_arn   = data.aws_acm_certificate.acn.arn
+  port              = var.port_http     #443 #"80"
+  protocol          = var.protocol_http #HTTPS #"HTTP"
 
   default_action {
     target_group_arn = aws_lb_target_group.https.arn
@@ -45,7 +43,7 @@ resource "aws_lb_listener_rule" "host_based_routing" {
 
   action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.https.arn
+    target_group_arn = aws_lb_target_group.http.arn
   }
 
   condition {
@@ -53,6 +51,27 @@ resource "aws_lb_listener_rule" "host_based_routing" {
     values = [var.values]
   }
 }
+
+resource "aws_lb_listener" "https" {
+  load_balancer_arn = aws_lb.public.arn
+  port              = var.port_https    #443 #"80"
+  protocol          = var.protocol_https #HTTPS #"HTTP"
+  ssl_policy        = var.protocol == "TLS" ? var.ssl_policy : ""
+  certificate_arn   = data.aws_acm_certificate.app.arn
+
+  default_action {
+    target_group_arn = aws_lb_target_group.https.arn
+    type             = "forward"
+  }
+}
+
+resource "aws_alb_listener_certificate" "https" {
+  listener_arn = aws_lb_listener.https.arn  
+  certificate_arn = data.aws_acm_certificate.app.arn
+  
+}
+
+
 resource "aws_lb_target_group" "https" {
   name     = "${var.app_name}-alb-https-tg"
   port     = var.target_port_https
@@ -62,7 +81,7 @@ resource "aws_lb_target_group" "https" {
   health_check {
     path              = var.path
     interval          = var.interval
-    port              = var.port
+    port              = var.port_https
     protocol          = var.protocol
     timeout           = var.load_balancer_type == "network" ? null : var.timeout
     healthy_threshold = var.healthy_threshold
@@ -87,7 +106,7 @@ resource "aws_lb_target_group" "http" {
   health_check {
     path              = var.path
     interval          = var.interval
-    port              = var.port
+    port              = var.port_http
     protocol          = var.protocol
     timeout           = var.load_balancer_type == "network" ? null : var.timeout
     healthy_threshold = var.healthy_threshold

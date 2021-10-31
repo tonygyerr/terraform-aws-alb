@@ -142,16 +142,28 @@ variable "lb_subnet_ids" {
   default     = []
 }
 
-variable "protocol" {
+variable "protocol_http" {
   description = "The protocol for connections from clients to the load balancer. Valid values TCP, TLS, UDP, TCP_UDP, HTTP, and HTTPS."
   type        = string
   default     = "HTTP"
 }
 
-variable "port" {
+variable "protocol_https" {
+  description = "The protocol for connections from clients to the load balancer. Valid values TCP, TLS, UDP, TCP_UDP, HTTP, and HTTPS."
+  type        = string
+  default     = "HTTP"
+}
+
+variable "port_http" {
   description = "The listener port that the load balancer"
   type        = number
   default     = 80
+}
+
+variable "port_https" {
+  description = "The listener port that the load balancer"
+  type        = number
+  default     = 443
 }
 
 variable "ssl_policy" {
