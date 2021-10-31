@@ -26,7 +26,7 @@ resource "aws_security_group" "app" {
 
   egress {
     from_port   = 0
-    to_port     = 65535
+    to_port     = 0
     protocol    = -1
     cidr_blocks = [var.vpc_config.open_cidr]
   }
