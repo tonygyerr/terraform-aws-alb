@@ -212,7 +212,7 @@ resource "aws_lb_target_group" "web" {
 }
 
 resource "aws_lb_target_group" "web_https" {
-  name     = "${var.app_name}-alb-https-tg"
+  name     = "${var.app_name}-alb-web-https-tg"
   port     = "8002"
   protocol = var.target_protocol_https #"HTTPS"
   vpc_id   = var.vpc_config.vpc_id #data.aws_vpc.computer_vision.id #
