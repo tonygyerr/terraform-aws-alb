@@ -42,3 +42,18 @@ output "alb_target_group_https_arn"{
   description = "Alb Target Group ARN"
   value = aws_lb_target_group.https.arn
 }
+
+output "alb_target_group_django_arn"{
+  description = "Alb Target Group ARN"
+  value = aws_lb_target_group.django.arn
+}
+
+output "alb_target_group_web_arn"{
+  description = "Alb Target Group ARN"
+  value = aws_lb_target_group.web.arn
+}
+
+output "alb_target_group_web_https_arn"{
+  description = "Alb Target Group ARN"
+  value = aws_lb_target_group.web_https.arn
+}
