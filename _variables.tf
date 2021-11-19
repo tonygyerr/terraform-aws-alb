@@ -291,3 +291,15 @@ variable "tls_ppk_filename" {
   type        = string
   default     = ""
 }
+
+variable "tls_common_name" {
+  description = "Certificate common name /CN"
+  type        = string
+  default     = ""
+}
+
+variable "tls_organization" {
+  description = "Certificate organization /O"
+  type        = string
+  default     = ""
+}
