@@ -1,6 +1,6 @@
 resource "aws_acm_certificate" "cert" {
-  private_key       = data.template_file.ppk.rendered #var.tls_pem_filename
-  certificate_body  = data.template_file.pem.rendered #var.tls_ppk_filename
+  private_key       = var.tls_pem_filename #data.template_file.ppk.rendered 
+  certificate_body  = var.tls_ppk_filename #data.template_file.pem.rendered
   tags = merge(map("Name", "${var.app_name}-cert"), var.tags)
 }
 
