@@ -42,7 +42,7 @@ resource "aws_security_group" "app" {
     from_port   = 9324 #sqs
     to_port     = 9324
     protocol    = "tcp"
-    cidr_blocks = var.private_subnets #application and database subnets
+    cidr_blocks = [var.vpc_config.cidr] #application and database subnets
   }
 
   egress {
