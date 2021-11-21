@@ -38,6 +38,13 @@ resource "aws_security_group" "app" {
     cidr_blocks = [var.vpc_config.cidr]
   }
 
+  ingress {
+    from_port   = 9324 #sqs
+    to_port     = 9324
+    protocol    = "tcp"
+    cidr_blocks = var.private_subnets #application and database subnets
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
@@ -77,6 +84,15 @@ resource "aws_security_group_rule" "web_https"{
   type = "ingress"
   from_port   = 8002
   to_port     = 8002
+  protocol    = "tcp"
+  security_group_id = aws_security_group.app.id
+  source_security_group_id = aws_security_group.app.id
+}
+
+resource "aws_security_group_rule" "sqs"{
+  type = "ingress"
+  from_port   = 9324
+  to_port     = 9324
   protocol    = "tcp"
   security_group_id = aws_security_group.app.id
   source_security_group_id = aws_security_group.app.id
