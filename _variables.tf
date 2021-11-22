@@ -136,6 +136,12 @@ variable "lb_logs_enabled" {
   default     = false
 }
 
+variable "internal" {
+  type        = bool
+  description = "Set to true for an internal load balancer. Set to false for public internet facing load balancer"
+  default     = true
+}
+
 variable "lb_subnet_ids" {
   description = "Enter subnets IDs to attach to the Load Balancer. Submets cannot be updated for Network Load Balancers. Changing of this value will force a new creation of the resource"
   type        = list(string)
