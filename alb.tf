@@ -1,6 +1,6 @@
 resource "aws_lb" "public" {
   name                             = "${var.app_name}-alb"
-  internal                         = true
+  internal                         = var.internal #set to true for an internal loadbalancer #set to false for an internet facing load balancer
   load_balancer_type               = var.load_balancer_type
   enable_cross_zone_load_balancing = var.enable_cross_zone_load_balancing
   security_groups                  = [aws_security_group.app.id] #[var.security_groups]

@@ -3,6 +3,7 @@ module "alb" {
   #source = "../"
   app_name              = var.app_name
   asg_name              = var.asg_name
+  internal              = var.internal
   load_balancer_type    = var.load_balancer_type
   lb_logs_bucket        = var.lb_logs_bucket
   lb_logs_prefix        = var.lb_logs_prefix

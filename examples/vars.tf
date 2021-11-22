@@ -4,6 +4,12 @@ variable "app_name" {
   default     = ""
 }
 
+variable "internal" {
+  type        = bool
+  description = "Set to true for an internal load balancer. Set to false for public internet facing load balancer"
+  default     = true
+}
+
 variable "lb_logs_bucket" {
   description = "The S3 Bucket for Logs"
   type        = string
