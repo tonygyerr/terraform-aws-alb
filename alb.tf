@@ -4,7 +4,7 @@ resource "aws_lb" "public" {
   load_balancer_type               = var.load_balancer_type
   enable_http2                     = false
   enable_cross_zone_load_balancing = var.enable_cross_zone_load_balancing
-  security_groups                  = [var.security_group_ids]
+  security_groups                  = var.security_group_ids
   subnets                          = var.public_subnet_ids # if load balancer is internal choose private subnets that are needed.
   idle_timeout                     = 400
   ip_address_type                  = "ipv4"
