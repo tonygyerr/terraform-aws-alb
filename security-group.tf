@@ -7,14 +7,14 @@ resource "aws_security_group" "app" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = [var.vpc_config.cidr.open_cidr] # set to open if a public internet facing loadbalancer # if internal load balancer set to vpc_cidr subnet range or needed range for your application
+    cidr_blocks = [var.vpc_config.open_cidr] # set to open if a public internet facing loadbalancer # if internal load balancer set to vpc_cidr subnet range or needed range for your application
   }
 
   ingress {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = [var.vpc_config.cidr.open_cidr]
+    cidr_blocks = [var.vpc_config.open_cidr]
   }
 
   egress {
