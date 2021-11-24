@@ -8,6 +8,7 @@ module "alb" {
   lb_logs_prefix        = var.lb_logs_prefix
   public_subnet_ids     = var.public_subnet_ids
   route53_zone_name     = var.route53_zone_name
+  security_group_ids    = var.security_group_ids
   tls_pem_filename      = var.tls_pem_filename
   tls_ppk_filename      = var.tls_ppk_filename
   validation_record_fqdn  = var.validation_record_fqdn

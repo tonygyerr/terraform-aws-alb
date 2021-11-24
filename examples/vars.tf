@@ -35,6 +35,12 @@ variable "route53_zone_name" {
   default     = ""
 }
 
+variable "security_group_ids" {
+  description = "security group ids applied to the load balancer. e.g. [\"sg-ab15ebe3\",\"sg-b012ecf8\"]"
+  type        = list
+  default     = []
+}
+
 variable "tags" {
   type        = map(string)
   description = "optional tags"
