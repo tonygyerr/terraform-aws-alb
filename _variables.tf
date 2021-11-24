@@ -38,8 +38,8 @@ variable "public_subnet_ids" {
 }
 
 
-variable "security_groups" {
-  description = "security groups applied to the load balancer. e.g. [\"sg-ab15ebe3\",\"sg-b012ecf8\"]"
+variable "security_group_ids" {
+  description = "security group ids applied to the load balancer. e.g. [\"sg-ab15ebe3\",\"sg-b012ecf8\"]"
   type        = list
   default     = []
 }
