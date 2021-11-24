@@ -1,6 +1,5 @@
 module "alb" {
   source = "git::ssh://git@github.com:tonygyerr/terraform-aws-alb.git"
-  #source = "../"
   app_name              = var.app_name
   asg_name              = var.asg_name
   internal              = var.internal

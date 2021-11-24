@@ -7,7 +7,7 @@ variable "app_name" {
 variable "internal" {
   description = "determines if the alb is internal or not"
   type    = bool
-  default = false # set to true for internal facing load balancer. # set to false for public internet facing load balancer
+  default = null # set to true for internal facing load balancer. # set to false for public internet facing load balancer
 }
 
 
