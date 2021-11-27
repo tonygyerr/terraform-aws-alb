@@ -37,6 +37,11 @@ variable "public_subnet_ids" {
   default     = []
 }
 
+variable "instance_targets" {
+  description = "list of autoscaled instance targets"
+  type        = list
+  default     = []
+}
 
 variable "security_group_ids" {
   description = "security group ids applied to the load balancer. e.g. [\"sg-ab15ebe3\",\"sg-b012ecf8\"]"
