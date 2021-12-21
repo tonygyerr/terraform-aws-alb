@@ -101,3 +101,9 @@ variable "validation_record_fqdn" {
   type        = string
   default     = ""
 }
+
+variable "path" {
+  type = string
+  description = "The destination for the health check request"
+  default     = ""
+}
