@@ -85,32 +85,6 @@ resource "aws_lb_listener" "django" {
   }
 }
 
-resource "aws_lb_listener" "web" {
-  load_balancer_arn = aws_lb.public.arn
-  port              = 8001    #443 #"80"
-  protocol          = var.protocol_https #HTTPS #"HTTP"
-  ssl_policy        = var.protocol_https == "TLS" ? var.ssl_policy : ""
-  certificate_arn   = data.aws_acm_certificate.app.arn
-
-  default_action {
-    target_group_arn = aws_lb_target_group.web.arn
-    type             = "forward"
-  }
-}
-
-resource "aws_lb_listener" "web_https" {
-  load_balancer_arn = aws_lb.public.arn
-  port              = 8002    #443 #"80"
-  protocol          = var.protocol_https #HTTPS #"HTTP"
-  ssl_policy        = var.protocol_https == "TLS" ? var.ssl_policy : ""
-  certificate_arn   = data.aws_acm_certificate.app.arn
-
-  default_action {
-    target_group_arn = aws_lb_target_group.web_https.arn
-    type             = "forward"
-  }
-}
-
 
 resource "aws_lb_target_group" "https" {
   name     = "${var.app_name}-alb-https-tg"
@@ -186,58 +160,3 @@ resource "aws_lb_target_group" "django" {
 
   tags                  = merge(map("Name", local.environment_name != local.tf_workspace ? "${local.tf_workspace}-${var.app_name}-alb-django-tg" : "${var.app_name}-tg"), merge(var.tags, var. acn_tags))
 }
-
-resource "aws_lb_target_group" "web" {
-  name     = "${var.app_name}-alb-web-tg"
-  port     = "8001"
-  protocol = var.target_protocol_https #"HTTPS"
-  vpc_id   = var.vpc_config.vpc_id #data.aws_vpc.computer_vision.id #
-  
-  health_check {
-    path              = var.path
-    interval          = var.interval
-    port              = "8001"
-    protocol          = var.protocol_https
-    timeout           = var.load_balancer_type == "network" ? null : var.timeout
-    healthy_threshold = var.healthy_threshold
-    unhealthy_threshold = var.unhealthy_threshold
-    matcher             = var.load_balancer_type == "network" ? null : var.matcher
-  }
-
-  stickiness {
-    enabled = false
-    type = "lb_cookie"
-  }
-
-  tags                  = merge(map("Name", local.environment_name != local.tf_workspace ? "${local.tf_workspace}-${var.app_name}-alb-web-tg" : "${var.app_name}-tg"), merge(var.tags, var. acn_tags))
-}
-
-resource "aws_lb_target_group" "web_https" {
-  name     = "${var.app_name}-alb-web-https-tg"
-  port     = "8002"
-  protocol = var.target_protocol_https #"HTTPS"
-  vpc_id   = var.vpc_config.vpc_id #data.aws_vpc.computer_vision.id #
-  
-  health_check {
-    path              = var.path
-    interval          = var.interval
-    port              = "8002"
-    protocol          = var.protocol_https
-    timeout           = var.load_balancer_type == "network" ? null : var.timeout
-    healthy_threshold = var.healthy_threshold
-    unhealthy_threshold = var.unhealthy_threshold
-    matcher             = var.load_balancer_type == "network" ? null : var.matcher
-  }
-
-  stickiness {
-    enabled = false
-    type = "lb_cookie"
-  }
-
-  tags                  = merge(map("Name", local.environment_name != local.tf_workspace ? "${local.tf_workspace}-${var.app_name}-alb-web-https-tg" : "${var.app_name}-tg"), merge(var.tags, var. acn_tags))
-}
-
-# resource "aws_autoscaling_attachment" "server" {
-#   alb_target_group_arn   = aws_lb_target_group.https.arn
-#   autoscaling_group_name = data.aws_autoscaling_group.server.id
-# }
