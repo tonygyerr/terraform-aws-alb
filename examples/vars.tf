@@ -4,6 +4,18 @@ variable "app_name" {
   default     = ""
 }
 
+variable "profile" {
+  description = "Name of AWS Credentials Profile"
+  type        = string
+  default     = ""
+}
+
+variable "aws_region" {
+  description = "Name of AWS region"
+  type        = string
+  default     = ""
+}
+
 variable "internal" {
   description = "determines if the alb is internal or not"
   type    = bool

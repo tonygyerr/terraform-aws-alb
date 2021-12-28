@@ -8,6 +8,19 @@ variable "vpc_name" {
   type        = string
 }
 
+variable "profile" {
+  description = "Name of AWS Credentials Profile"
+  type        = string
+  default     = ""
+}
+
+variable "aws_region" {
+  description = "Name of AWS region"
+  type        = string
+  default     = ""
+}
+
+
 variable "asg_name" {
   description = "Name of the autoscaled ec2 instance"
   type        = string

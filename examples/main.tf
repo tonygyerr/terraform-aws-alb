@@ -2,11 +2,13 @@ module "alb" {
   source = "git::ssh://git@github.com:tonygyerr/terraform-aws-alb.git"
   app_name              = var.app_name
   asg_name              = var.asg_name
+  aws_region            = var.aws_region
   internal              = var.internal
   load_balancer_type    = var.load_balancer_type
   lb_logs_bucket        = var.lb_logs_bucket
   lb_logs_prefix        = var.lb_logs_prefix
   path                  = var.path
+  profile               = var.profile
   public_subnet_ids     = var.public_subnet_ids
   route53_zone_name     = var.route53_zone_name
   security_group_ids    = var.security_group_ids
