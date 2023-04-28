@@ -158,5 +158,5 @@ resource "aws_lb_target_group" "django" {
     type = "lb_cookie"
   }
 
-  tags                  = merge(map("Name", local.environment_name != local.tf_workspace ? "${local.tf_workspace}-${var.app_name}-alb-django-tg" : "${var.app_name}-tg"), merge(var.tags, var. acn_tags))
+  tags                  = var.tags
 }
