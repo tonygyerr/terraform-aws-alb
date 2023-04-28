@@ -50,6 +50,7 @@ resource "aws_lb_listener_rule" "host_based_routing" {
   condition {
     host_header {
       values = [var.values]
+    }
   }
 }
 
