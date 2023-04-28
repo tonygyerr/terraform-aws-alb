@@ -48,8 +48,8 @@ resource "aws_lb_listener_rule" "host_based_routing" {
   }
 
   condition {
-    field  = var.field
-    values = [var.values]
+    host_header {
+      values = [var.values]
   }
 }
 
