@@ -19,17 +19,6 @@ data "aws_availability_zones" "available" {
 
 data "aws_iam_account_alias" "current" {}
 
-data "null_data_source" "environment" {
-  inputs = "${map(
-    "SDLC",
-    lower(
-      element(
-        split("-", data.aws_iam_account_alias.current.account_alias),
-        length(split("-", data.aws_iam_account_alias.current.account_alias)) - 1
-    ))
-  )}"
-}
-
 # data "aws_autoscaling_group" "server" {
 #   name = "my-asg-name"
 # }
