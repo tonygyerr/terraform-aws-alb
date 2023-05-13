@@ -28,6 +28,8 @@ tags = {
 lb_logs_bucket              = ""
 lb_logs_prefix              = "logs"
 load_balancer_type          = "application"
+port_http                   = "80"
+health_port_http            = "traffic-port"
 
 #--------------------------------------------------------------
 # route53
