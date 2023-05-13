@@ -175,12 +175,11 @@ variable "protocol_https" {
 variable "port_http" {
   description = "The listener port that the load balancer"
   type        = number
-  default     = ""
 }
 
 variable "health_port_http" {
   description = "The listener port that the load balancer"
-  type        = number
+  type        = string
   default     = ""
 }
 
