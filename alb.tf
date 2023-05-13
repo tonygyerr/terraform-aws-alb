@@ -121,7 +121,7 @@ resource "aws_lb_target_group" "http" {
   health_check {
     path              = var.path
     interval          = var.interval
-    port              = var.port_http
+    port              = var.health_port_http
     protocol          = var.protocol_http
     timeout           = var.load_balancer_type == "network" ? null : var.timeout
     healthy_threshold = var.healthy_threshold
